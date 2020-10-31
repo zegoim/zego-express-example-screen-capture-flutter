@@ -1,5 +1,7 @@
 PODS:
   - Flutter (1.0.0)
+  - "permission_handler (5.0.1+1)":
+    - Flutter
   - replay_kit_launcher (0.0.1):
     - Flutter
   - shared_preference_app_group (0.1.1):
@@ -15,6 +17,7 @@ PODS:
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
+  - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
   - replay_kit_launcher (from `.symlinks/plugins/replay_kit_launcher/ios`)
   - shared_preference_app_group (from `.symlinks/plugins/shared_preference_app_group/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
@@ -28,6 +31,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
+  permission_handler:
+    :path: ".symlinks/plugins/permission_handler/ios"
   replay_kit_launcher:
     :path: ".symlinks/plugins/replay_kit_launcher/ios"
   shared_preference_app_group:
@@ -39,6 +44,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  permission_handler: eac8e15b4a1a3fba55b761d19f3f4e6b005d15b6
   replay_kit_launcher: e2b85653d7ee455d067abc1a74c4feb8574087d4
   shared_preference_app_group: 8f2559e5167cce5b091a9b5dc79be60fbc471f5e
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
