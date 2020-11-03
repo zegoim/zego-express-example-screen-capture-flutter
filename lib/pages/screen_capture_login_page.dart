@@ -26,6 +26,7 @@ class _ScreenCaptureLoginPageState extends State<ScreenCaptureLoginPage> {
   final TextEditingController _streamIDEdController = new TextEditingController();
 
   ScreenCaptureManager manager = ScreenCaptureManagerFactory.createManager();
+  bool screenCaptureBtnClickable = true;
 
   @override
   void initState() {
@@ -59,6 +60,10 @@ class _ScreenCaptureLoginPageState extends State<ScreenCaptureLoginPage> {
 
   void startScreenCapture() async {
 
+    setState(() {
+      screenCaptureBtnClickable = false;
+    });
+
     syncConfig();
 
     // Set necessary params (just for iOS)
@@ -68,10 +73,23 @@ class _ScreenCaptureLoginPageState extends State<ScreenCaptureLoginPage> {
 
     // Start screen capture
     await manager.startScreenCapture();
+
+    setState(() {
+      screenCaptureBtnClickable = true;
+    });
   }
 
-  void stopScreenCapture() {
-    manager.stopScreenCapture();
+  void stopScreenCapture() async {
+    setState(() {
+      screenCaptureBtnClickable = false;
+    });
+
+    await manager.stopScreenCapture();
+    
+    setState(() {
+      screenCaptureBtnClickable = true;
+    });
+
   }
 
   @override
@@ -182,7 +200,7 @@ class _ScreenCaptureLoginPageState extends State<ScreenCaptureLoginPage> {
                       color: Colors.white
                     ),
                   ),
-                  onPressed: startScreenCapture,
+                  onPressed: screenCaptureBtnClickable ? startScreenCapture : null,
                 ),
               ),
               Padding(
@@ -202,7 +220,7 @@ class _ScreenCaptureLoginPageState extends State<ScreenCaptureLoginPage> {
                       color: Colors.white
                     ),
                   ),
-                  onPressed: stopScreenCapture,
+                  onPressed: screenCaptureBtnClickable ? stopScreenCapture: null,
                 ),
               )
             ],
