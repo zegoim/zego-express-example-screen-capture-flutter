@@ -41,7 +41,7 @@ abstract class ScreenCaptureManager {
   Future<void> setParamsForStartLive(String roomID, String userID, String userName, String streamID);
 
   /// Only iOS needs to set
-  /// [appGroupID] is both your `Runer` target and `BroadCast Upload Extension` target's AppGroup ID
+  /// [appGroupID] is both your `Runner` target and `BroadCast Upload Extension` target's AppGroup ID
   Future<void> setAppGroup(String appGroupID) {
     return null;
   }
