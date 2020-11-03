@@ -47,7 +47,7 @@ class ScreenCaptureManagerImplAndroid extends ScreenCaptureManager {
 
     await ZegoExpressEngine.createEngine(appID, appSign, isTestEnv, ZegoScenario.General);
     /// Developers need to write native Android code to access native ZegoExpressEngine
-    await ZegoExpressEngine.instance.enableCustomVideoCapture(true, config: ZegoCustomVideoCaptureConfig(ZegoVideoBufferType.GLTexture2D));
+    await ZegoExpressEngine.instance.enableCustomVideoCapture(true, config: ZegoCustomVideoCaptureConfig(ZegoVideoBufferType.SurfaceTexture));
     await ZegoExpressEngine.instance.setVideoConfig(ZegoVideoConfig(videoWidth, videoHeight, videoWidth, videoHeight, videoFPS, videoBitrateKBPS, ZegoVideoCodecID.Default));
     await ZegoExpressEngine.instance.loginRoom(roomID, ZegoUser(userID, userName));
     await ZegoExpressEngine.instance.startPublishingStream(streamID);
