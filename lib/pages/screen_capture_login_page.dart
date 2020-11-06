@@ -67,7 +67,7 @@ class _ScreenCaptureLoginPageState extends State<ScreenCaptureLoginPage> {
     syncConfig();
 
     // Set necessary params (just for iOS)
-    await manager.setParamsForCreateEngine(ZegoConfig.instance.appID, ZegoConfig.instance.appSign, ZegoConfig.instance.isTestEnv, true);
+    await manager.setParamsForCreateEngine(ZegoConfig.instance.appID, ZegoConfig.instance.appSign, ZegoConfig.instance.isTestEnv, false);
     await manager.setParamsForVideoConfig(window.physicalSize.width.toInt(), window.physicalSize.height.toInt(), 15, 3000);
     await manager.setParamsForStartLive(ZegoConfig.instance.roomID, ZegoConfig.instance.userID, ZegoConfig.instance.userName, ZegoConfig.instance.streamID);
 
@@ -85,7 +85,7 @@ class _ScreenCaptureLoginPageState extends State<ScreenCaptureLoginPage> {
     });
 
     await manager.stopScreenCapture();
-    
+
     setState(() {
       screenCaptureBtnClickable = true;
     });

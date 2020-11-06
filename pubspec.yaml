@@ -31,7 +31,7 @@ dependencies:
   shared_preferences: ^0.5.12
   permission_handler: ^5.0.0
 
-  zego_express_engine: ^1.17.0
+  zego_express_engine: ^1.17.5
 
   # To launch RPSystemBroadcastPickerView in iOS
   replay_kit_launcher: 0.2.0
