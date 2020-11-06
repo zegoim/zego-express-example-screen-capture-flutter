@@ -15,7 +15,7 @@ static ZGScreenCaptureManager *_sharedManager = nil;
 
 @property (nonatomic, copy) NSString *appGroup;
 @property (nonatomic, strong) NSUserDefaults *userDefaults;
-
+@property (nonatomic, weak) RPBroadcastSampleHandler *sampleHandler;
 
 // Parameters synchronized from the main App process
 
@@ -58,9 +58,18 @@ static ZGScreenCaptureManager *_sharedManager = nil;
     return _sharedManager;
 }
 
-- (void)startBroadcastWithAppGroup:(NSString *)appGroup {
+- (void)startBroadcastWithAppGroup:(NSString *)appGroup sampleHandler:(RPBroadcastSampleHandler *)sampleHandler {
+    self.sampleHandler = sampleHandler;
     self.appGroup = appGroup;
     self.userDefaults = [[NSUserDefaults alloc] initWithSuiteName:_appGroup];
+
+    // Add an observer for stop broadcast notification
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(),
+                                    (__bridge const void *)(self),
+                                    onBroadcastFinish,
+                                    (CFStringRef)@"ZGFinishReplayKitBroadcastNotificationName",
+                                    NULL,
+                                    CFNotificationSuspensionBehaviorDeliverImmediately);
 
     [self syncParametersFromMainAppProcess];
 
@@ -71,10 +80,20 @@ static ZGScreenCaptureManager *_sharedManager = nil;
     [self startPublish];
 }
 
-- (void)stopBroadcast {
+- (void)stopBroadcast:(void(^_Nullable)(void))completion {
     [[ZegoExpressEngine sharedEngine] stopPublishingStream];
     [[ZegoExpressEngine sharedEngine] logoutRoom:self.roomID];
-    [ZegoExpressEngine destroyEngine:nil];
+    [ZegoExpressEngine destroyEngine:^{
+        if (completion) {
+            completion();
+        }
+    }];
+
+    // Remove observer for stop broadcast notification
+    CFNotificationCenterRemoveObserver(CFNotificationCenterGetDarwinNotifyCenter(),
+                                       (__bridge const void *)(self),
+                                       (CFStringRef)@"ZGFinishReplayKitBroadcastNotificationName",
+                                       NULL);
 }
 
 - (void)handleSampleBuffer:(CMSampleBufferRef)sampleBuffer withType:(RPSampleBufferType)sampleBufferType {
@@ -89,6 +108,21 @@ static ZGScreenCaptureManager *_sharedManager = nil;
 
 
 #pragma mark - Private methods
+
+// Handle stop broadcast notification from main app process
+static void onBroadcastFinish(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
+
+    // Stop broadcast
+    [[ZGScreenCaptureManager sharedManager] stopBroadcast:^{
+        RPBroadcastSampleHandler *handler = [ZGScreenCaptureManager sharedManager].sampleHandler;
+        if (handler) {
+            // Finish broadcast extension process
+            [handler finishBroadcastWithError:[[NSError alloc] initWithDomain:NSCocoaErrorDomain code:0 userInfo:nil]];
+        } else {
+            NSLog(@"⚠️ RPBroadcastSampleHandler is null, can not stop broadcast upload extension process");
+        }
+    }];
+}
 
 // Set some config for engine
 - (void)setEngineConfig {
@@ -116,7 +150,6 @@ static ZGScreenCaptureManager *_sharedManager = nil;
     [ZegoExpressEngine setEngineConfig:engineConfig];
 }
 
-
 - (void)setupEngine {
 
     // Create engine
@@ -129,7 +162,6 @@ static ZGScreenCaptureManager *_sharedManager = nil;
     [[ZegoExpressEngine sharedEngine] enableHardwareEncoder:YES];
 
 }
-
 
 - (void)setVideoConfig {
 

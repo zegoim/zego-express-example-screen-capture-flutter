@@ -24,14 +24,12 @@ class ScreenCaptureManagerImplIOS extends ScreenCaptureManager {
       print('On iOS, please `setAppGroup` and `setReplayKitExtensionName` first');
       return false;
     }
-    await ReplayKitLauncher.launchReplayKitBroadcast(this.extensionName);
-    return true;
+    return ReplayKitLauncher.launchReplayKitBroadcast(this.extensionName);
   }
 
   @override
   Future<bool> stopScreenCapture() async {
-    print('On iOS, users need to actively stop screen capture');
-    return false;
+    return await ReplayKitLauncher.finishReplayKitBroadcast('ZGFinishReplayKitBroadcastNotificationName');
   }
 
   @override
