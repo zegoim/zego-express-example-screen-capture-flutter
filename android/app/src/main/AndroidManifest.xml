@@ -7,7 +7,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="zego_express_screen_capture"
+        android:label="ZegoScreenCaptureDemo"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
