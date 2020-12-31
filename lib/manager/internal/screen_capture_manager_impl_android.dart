@@ -59,6 +59,8 @@ class ScreenCaptureManagerImplAndroid extends ScreenCaptureManager {
     await ZegoExpressEngine.instance.stopPublishingStream();
     await ZegoExpressEngine.instance.logoutRoom(roomID);
     await ZegoExpressEngine.destroyEngine();
+
+    await MediaProjectionCreator.destroyMediaProjection();
     return true;
   }
 

@@ -106,7 +106,7 @@ packages:
       name: media_projection_creator
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.1"
+    version: "0.2.0"
   meta:
     dependency: transitive
     description:
@@ -314,7 +314,7 @@ packages:
       name: zego_express_engine
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.17.5"
+    version: "1.20.0"
 sdks:
   dart: ">=2.10.0-110 <2.11.0"
   flutter: ">=1.12.13+hotfix.5 <2.0.0"
