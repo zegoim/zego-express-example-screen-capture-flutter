@@ -35,7 +35,7 @@ end
 # Note that this version number must be the same with the flutter `zego_express_engine` plugin's imported in the main Flutter App
 # otherwise there will be problems when compliling
 target 'BroadcastExtensionFlutter' do
-  pod 'ZegoExpressEngine', '1.17.5'
+  pod 'ZegoExpressEngine', '2.2.0'
 end
 
 post_install do |installer|

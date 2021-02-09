@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 2.2.0
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -30,13 +30,14 @@ dependencies:
 
   shared_preferences: ^0.5.12
   permission_handler: ^5.0.0
+  url_launcher: ^5.7.10
 
-  zego_express_engine: ^1.20.0
+  zego_express_engine: ^2.2.0
 
   # To launch RPSystemBroadcastPickerView in iOS
   replay_kit_launcher: 0.2.0
   # To share some necessary parameters (e.g AppID/AppSign/RoomID/StreamID) from main flutter app to the iOS broadcast upload extension (ReplayKit) sub-process through the app group capability
-  shared_preference_app_group: 0.1.1
+  shared_preference_app_group: 0.2.0
 
   # To get MediaProjection in Android (with requesting permission)
   media_projection_creator: 0.2.0
