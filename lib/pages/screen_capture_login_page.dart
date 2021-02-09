@@ -10,6 +10,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:zego_express_screen_capture/ui/zego_ui_tool.dart';
 import 'package:zego_express_screen_capture/config/zego_config.dart';
 
@@ -107,17 +108,13 @@ class _ScreenCaptureLoginPageState extends State<ScreenCaptureLoginPage> {
           padding: const EdgeInsets.symmetric(horizontal: 40.0),
           child: ListView(
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(bottom: 20.0),
-              ),
+              SizedBox(height: 20.0,),
               Row(
                 children: <Widget>[
                   Text('RoomID: '),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10.0),
-              ),
+              SizedBox(height: 10.0,),
               TextField(
                 controller: _roomIDEdController,
                 decoration: InputDecoration(
@@ -135,9 +132,7 @@ class _ScreenCaptureLoginPageState extends State<ScreenCaptureLoginPage> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10.0),
-              ),
+              SizedBox(height: 10.0,),
               Text('RoomID represents the identification of a room, it needs to ensure that the RoomID is globally unique, and no longer than 255 bytes',
                 style: TextStyle(
                   fontSize: 12.0,
@@ -146,17 +141,13 @@ class _ScreenCaptureLoginPageState extends State<ScreenCaptureLoginPage> {
                 maxLines: 2,
                 softWrap: true,
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 50.0),
-              ),
+              SizedBox(height: 30.0,),
               Row(
                 children: <Widget>[
                   Text('StreamID: '),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10.0),
-              ),
+              SizedBox(height: 10.0,),
               TextField(
                 controller: _streamIDEdController,
                 decoration: InputDecoration(
@@ -174,18 +165,14 @@ class _ScreenCaptureLoginPageState extends State<ScreenCaptureLoginPage> {
                   )
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10.0),
-              ),
+              SizedBox(height: 10.0,),
               Text('StreamID must be globally unique and the length should not exceed 255 bytes',
                 style: TextStyle(
                   fontSize: 12.0,
                   color: Colors.black45
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 30.0),
-              ),
+              SizedBox(height: 30.0,),
               Container(
                 padding: const EdgeInsets.all(0.0),
                 decoration: BoxDecoration(
@@ -203,9 +190,7 @@ class _ScreenCaptureLoginPageState extends State<ScreenCaptureLoginPage> {
                   onPressed: screenCaptureBtnClickable ? startScreenCapture : null,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 30.0),
-              ),
+              SizedBox(height: 30.0,),
               Container(
                 padding: const EdgeInsets.all(0.0),
                 decoration: BoxDecoration(
@@ -222,7 +207,42 @@ class _ScreenCaptureLoginPageState extends State<ScreenCaptureLoginPage> {
                   ),
                   onPressed: screenCaptureBtnClickable ? stopScreenCapture: null,
                 ),
-              )
+              ),
+              SizedBox(height: 30.0,),
+              Row(children: [
+                GestureDetector(
+                  child: Container(
+                      width: 40.0,
+                      height: 40.0,
+                      child: Icon(Icons.info_outline)
+                  ),
+                  onTap: () {
+                    showDialog(context: context, builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Tips'),
+                        content: Text(
+                            'To play this stream, you can download and install the Zego flutter example.'),
+                        actions: <Widget>[
+                          FlatButton(
+                            child: Text('Dismiss'),
+                            onPressed: () => Navigator.of(context).pop(),
+                          ),
+                          FlatButton(
+                            child: Text('Download'),
+                            onPressed: () => launch('https://github.com/zegoim/zego-express-example-topics-flutter'),
+                          )
+                        ],
+                      );
+                    });
+                  },
+                ),
+                Expanded(child: Text('You can use another device to play this stream of screen capture.',
+                  style: TextStyle(
+                      fontSize: 12.0,
+                      color: Colors.black45
+                  ),
+                ),)
+              ],),
             ],
           ),
         )
