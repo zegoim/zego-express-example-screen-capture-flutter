@@ -13,7 +13,6 @@ class ZegoConfig {
 
   int appID;
   String appSign;
-  bool isTestEnv;
   int scenario;
 
   String userID;
@@ -31,7 +30,6 @@ class ZegoConfig {
 
     this.appID = config.getInt('appID') ?? 0;
     this.appSign = config.getString('appSign') ?? '';
-    this.isTestEnv = config.getBool('isTestEnv') ?? true;
     this.scenario = config.getInt('scenario') ?? ZegoScenario.General.index;
 
     this.userID = config.getString('userID') ?? '${Platform.operatingSystem}-${new Random().nextInt(9999999).toString()}';
@@ -49,7 +47,6 @@ class ZegoConfig {
 
     config.setInt('appID', this.appID);
     config.setString('appSign', this.appSign);
-    config.setBool('isTestEnv', this.isTestEnv);
     config.setInt('scenario', this.scenario);
 
     config.setString('userID', this.userID);

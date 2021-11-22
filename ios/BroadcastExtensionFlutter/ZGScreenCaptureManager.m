@@ -22,7 +22,6 @@ static ZGScreenCaptureManager *_sharedManager = nil;
 // for [createEngine]
 @property (nonatomic, assign) unsigned int appID;
 @property (nonatomic, copy) NSString *appSign;
-@property (nonatomic, assign) BOOL isTestEnv;
 @property (nonatomic, assign) ZegoScenario scenario;
 
 // for [setVideoConfig]
@@ -116,8 +115,11 @@ static void onBroadcastFinish(CFNotificationCenterRef center, void *observer, CF
     [[ZGScreenCaptureManager sharedManager] stopBroadcast:^{
         RPBroadcastSampleHandler *handler = [ZGScreenCaptureManager sharedManager].sampleHandler;
         if (handler) {
-            // Finish broadcast extension process
-            [handler finishBroadcastWithError:[[NSError alloc] initWithDomain:NSCocoaErrorDomain code:0 userInfo:nil]];
+            // Finish broadcast extension process with no error
+            #pragma clang diagnostic push
+            #pragma clang diagnostic ignored "-Wnonnull"
+            [handler finishBroadcastWithError:nil];
+            #pragma clang diagnostic pop
         } else {
             NSLog(@"⚠️ RPBroadcastSampleHandler is null, can not stop broadcast upload extension process");
         }
@@ -135,25 +137,27 @@ static void onBroadcastFinish(CFNotificationCenterRef center, void *observer, CF
 
     ZegoLogConfig *logConfig = [[ZegoLogConfig alloc] init];
     logConfig.logPath = logDirURL.path;
-
-    ZegoEngineConfig *engineConfig = [[ZegoEngineConfig alloc] init];
-    engineConfig.logConfig = logConfig;
+    [ZegoExpressEngine setLogConfig:logConfig];
 
     // Set some optimization options to reduce memory usage when publishing stream
+    ZegoEngineConfig *engineConfig = [[ZegoEngineConfig alloc] init];
     engineConfig.advancedConfig = @{
         @"replaykit_handle_rotation": @"false", // Specify not to process the screen rotation on the publisher side, but to process it on the player side, thereby reduce memory usage, but in this case, the player must not play this stream from the CDN but directly from the ZEGO server. If you need to play this stream from the CDN and the captured screen needs to be dynamically rotated, please comment this line of code.
 
         @"max_channels": @"0",                  // Specify the max number of streams to play as 0  (Because this extension only needs to publish stream)
         @"max_publish_channels": @"1"           // Specify the max number of streams to publish as 1
     };
-
     [ZegoExpressEngine setEngineConfig:engineConfig];
 }
 
 - (void)setupEngine {
 
     // Create engine
-    [ZegoExpressEngine createEngineWithAppID:self.appID appSign:self.appSign isTestEnv:self.isTestEnv scenario:self.scenario eventHandler:self];
+    ZegoEngineProfile *profile = [[ZegoEngineProfile alloc] init];
+    profile.appID = self.appID;
+    profile.appSign = self.appSign;
+    profile.scenario = self.scenario;
+    [ZegoExpressEngine createEngineWithProfile:profile eventHandler:self];
 
     // Init SDK ReplayKit module
     [[ZegoExpressEngine sharedEngine] prepareForReplayKit];
@@ -189,7 +193,6 @@ static void onBroadcastFinish(CFNotificationCenterRef center, void *observer, CF
     // Get parameters for [createEngine]
     self.appID = [(NSNumber *)[self.userDefaults valueForKey:@"ZG_SCREEN_CAPTURE_APP_ID"] unsignedIntValue];
     self.appSign = (NSString *)[self.userDefaults valueForKey:@"ZG_SCREEN_CAPTURE_APP_SIGN"];
-    self.isTestEnv = [(NSNumber *)[self.userDefaults valueForKey:@"ZG_SCREEN_CAPTURE_IS_TEST_ENV"] boolValue];
     self.scenario = (ZegoScenario)[(NSNumber *)[self.userDefaults valueForKey:@"ZG_SCREEN_CAPTURE_SCENARIO"] intValue];
 
     // Get parameters for [setVideoConfig]

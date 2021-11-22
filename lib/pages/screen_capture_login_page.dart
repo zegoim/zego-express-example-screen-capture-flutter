@@ -68,7 +68,7 @@ class _ScreenCaptureLoginPageState extends State<ScreenCaptureLoginPage> {
     syncConfig();
 
     // Set necessary params (just for iOS)
-    await manager.setParamsForCreateEngine(ZegoConfig.instance.appID, ZegoConfig.instance.appSign, ZegoConfig.instance.isTestEnv, false);
+    await manager.setParamsForCreateEngine(ZegoConfig.instance.appID, ZegoConfig.instance.appSign, false);
     await manager.setParamsForVideoConfig(window.physicalSize.width.toInt(), window.physicalSize.height.toInt(), 15, 3000);
     await manager.setParamsForStartLive(ZegoConfig.instance.roomID, ZegoConfig.instance.userID, ZegoConfig.instance.userName, ZegoConfig.instance.streamID);
 
@@ -190,25 +190,7 @@ class _ScreenCaptureLoginPageState extends State<ScreenCaptureLoginPage> {
                   onPressed: screenCaptureBtnClickable ? startScreenCapture : null,
                 ),
               ),
-              SizedBox(height: 30.0,),
-              Container(
-                padding: const EdgeInsets.all(0.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.0),
-                  color: Color(0xff0e88eb),
-                ),
-                width: 240.0,
-                height: 60.0,
-                child: CupertinoButton(
-                  child: Text('Stop Screen Capture',
-                    style: TextStyle(
-                      color: Colors.white
-                    ),
-                  ),
-                  onPressed: screenCaptureBtnClickable ? stopScreenCapture: null,
-                ),
-              ),
-              SizedBox(height: 30.0,),
+              SizedBox(height: 10.0,),
               Row(children: [
                 GestureDetector(
                   child: Container(
@@ -243,6 +225,33 @@ class _ScreenCaptureLoginPageState extends State<ScreenCaptureLoginPage> {
                   ),
                 ),)
               ],),
+              SizedBox(height: 10.0,),
+              Container(
+                padding: const EdgeInsets.all(0.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12.0),
+                  color: Color(0xff0e88eb),
+                ),
+                width: 240.0,
+                height: 60.0,
+                child: CupertinoButton(
+                  child: Text('Stop Screen Capture',
+                    style: TextStyle(
+                      color: Colors.white
+                    ),
+                  ),
+                  onPressed: screenCaptureBtnClickable ? stopScreenCapture: null,
+                ),
+              ),
+              SizedBox(height: 10.0,),
+              Text('If there is no response after starting the live broadcast, it may be due to an iOS Extension bug in the DEBUG mode, you could reboot your iOS device.',
+                style: TextStyle(
+                  fontSize: 12.0,
+                  color: Colors.black45
+                ),
+                // maxLines: 2,
+                softWrap: true,
+              ),
             ],
           ),
         )

@@ -45,10 +45,9 @@ class ScreenCaptureManagerImplIOS extends ScreenCaptureManager {
   }
 
   @override
-  Future<void> setParamsForCreateEngine(int appID, String appSign, bool isTestEnv, bool onlyCaptureVideo) async {
+  Future<void> setParamsForCreateEngine(int appID, String appSign, bool onlyCaptureVideo) async {
     await SharedPreferenceAppGroup.setInt('ZG_SCREEN_CAPTURE_APP_ID', appID);
     await SharedPreferenceAppGroup.setString('ZG_SCREEN_CAPTURE_APP_SIGN', appSign);
-    await SharedPreferenceAppGroup.setBool("ZG_SCREEN_CAPTURE_IS_TEST_ENV", isTestEnv);
     await SharedPreferenceAppGroup.setInt("ZG_SCREEN_CAPTURE_SCENARIO", 0);
     await SharedPreferenceAppGroup.setBool("ZG_SCREEN_CAPTURE_ONLY_CAPTURE_VIDEO", onlyCaptureVideo);
   }

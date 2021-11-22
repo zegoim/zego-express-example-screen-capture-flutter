@@ -34,7 +34,7 @@ abstract class ScreenCaptureManager {
   Future<bool> stopScreenCapture();
 
   /// [onlyCaptureVideo] indicates whether to capture only video buffer, otherwise it will capture video + audio buffer
-  Future<void> setParamsForCreateEngine(int appID, String appSign, bool isTestEnv, bool onlyCaptureVideo);
+  Future<void> setParamsForCreateEngine(int appID, String appSign, bool onlyCaptureVideo);
 
   Future<void> setParamsForVideoConfig(int videoWidth, int videoHeight, int videoFPS, int videoBitrateKBPS);
 

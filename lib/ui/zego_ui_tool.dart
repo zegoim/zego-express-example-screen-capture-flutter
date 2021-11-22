@@ -9,7 +9,7 @@ class ZegoUITool {
         title: Text('Tips'),
         content: Text(message),
         actions: <Widget>[
-          FlatButton(
+          TextButton(
             child: Text('OK'),
             onPressed: () {
               Navigator.of(context).pop();

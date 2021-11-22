@@ -3,14 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		287DB5794E23C0F950B0B8B3 /* libPods-Runner.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2D051C74B866BF9877111B /* libPods-Runner.a */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
-		69B63EF163799D08952E4A28 /* libPods-BroadcastExtensionFlutter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CEC0810272DD302B22A1CA7 /* libPods-BroadcastExtensionFlutter.a */; };
 		86A4DED92546F3E0003910C2 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A4DED82546F3E0003910C2 /* ReplayKit.framework */; };
 		86A4DEDD2546F3E0003910C2 /* SampleHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A4DEDC2546F3E0003910C2 /* SampleHandler.m */; };
 		86A4DEE12546F3E0003910C2 /* BroadcastExtensionFlutter.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 86A4DED72546F3E0003910C2 /* BroadcastExtensionFlutter.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -20,6 +19,7 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
+		F1CBAA75274B6DF800A83C61 /* ZegoExpressEngine.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CBAA74274B6DF800A83C61 /* ZegoExpressEngine.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,10 +60,8 @@
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
 		1B23C436E8501595A63C37C8 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
-		1F841B9B6130F3C539118201 /* Pods-BroadcastExtensionFlutter.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BroadcastExtensionFlutter.profile.xcconfig"; path = "Target Support Files/Pods-BroadcastExtensionFlutter/Pods-BroadcastExtensionFlutter.profile.xcconfig"; sourceTree = "<group>"; };
 		3A54D95FF8C54B2D879C4FFC /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
-		4CEC0810272DD302B22A1CA7 /* libPods-BroadcastExtensionFlutter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BroadcastExtensionFlutter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
 		7AFFD8ED1D35381100E5BB4D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7AFFD8EE1D35381100E5BB4D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -85,9 +83,8 @@
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6AE31FFC859BF5E55546F77 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
-		B46110EFC55AE05D584BF9EF /* Pods-BroadcastExtensionFlutter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BroadcastExtensionFlutter.release.xcconfig"; path = "Target Support Files/Pods-BroadcastExtensionFlutter/Pods-BroadcastExtensionFlutter.release.xcconfig"; sourceTree = "<group>"; };
 		CA2D051C74B866BF9877111B /* libPods-Runner.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Runner.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D174E4B60CC5594B051702A9 /* Pods-BroadcastExtensionFlutter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BroadcastExtensionFlutter.debug.xcconfig"; path = "Target Support Files/Pods-BroadcastExtensionFlutter/Pods-BroadcastExtensionFlutter.debug.xcconfig"; sourceTree = "<group>"; };
+		F1CBAA74274B6DF800A83C61 /* ZegoExpressEngine.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ZegoExpressEngine.xcframework; path = Pods/ZegoExpressEngine/Video/iOS/ZegoExpressEngine.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +93,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86A4DED92546F3E0003910C2 /* ReplayKit.framework in Frameworks */,
-				69B63EF163799D08952E4A28 /* libPods-BroadcastExtensionFlutter.a in Frameworks */,
+				F1CBAA75274B6DF800A83C61 /* ZegoExpressEngine.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,9 +111,9 @@
 		0008C35556E7A6002C7D1047 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1CBAA74274B6DF800A83C61 /* ZegoExpressEngine.xcframework */,
 				CA2D051C74B866BF9877111B /* libPods-Runner.a */,
 				86A4DED82546F3E0003910C2 /* ReplayKit.framework */,
-				4CEC0810272DD302B22A1CA7 /* libPods-BroadcastExtensionFlutter.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -197,9 +194,6 @@
 				3A54D95FF8C54B2D879C4FFC /* Pods-Runner.debug.xcconfig */,
 				1B23C436E8501595A63C37C8 /* Pods-Runner.release.xcconfig */,
 				A6AE31FFC859BF5E55546F77 /* Pods-Runner.profile.xcconfig */,
-				D174E4B60CC5594B051702A9 /* Pods-BroadcastExtensionFlutter.debug.xcconfig */,
-				B46110EFC55AE05D584BF9EF /* Pods-BroadcastExtensionFlutter.release.xcconfig */,
-				1F841B9B6130F3C539118201 /* Pods-BroadcastExtensionFlutter.profile.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -211,7 +205,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 86A4DEE22546F3E0003910C2 /* Build configuration list for PBXNativeTarget "BroadcastExtensionFlutter" */;
 			buildPhases = (
-				0D71937AC8F72AD28AE69B68 /* [CP] Check Pods Manifest.lock */,
 				86A4DED32546F3E0003910C2 /* Sources */,
 				86A4DED42546F3E0003910C2 /* Frameworks */,
 				86A4DED52546F3E0003910C2 /* Resources */,
@@ -307,28 +300,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0D71937AC8F72AD28AE69B68 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BroadcastExtensionFlutter-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3B06AD1E1E4923F5004D2608 /* Thin Binary */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -490,7 +461,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
@@ -505,7 +476,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -520,6 +491,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
+				MARKETING_VERSION = 2.14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = im.zego.express.example.screencapture.zegoExpressScreenCapture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -528,7 +500,6 @@
 		};
 		86A4DEE32546F3E0003910C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D174E4B60CC5594B051702A9 /* Pods-BroadcastExtensionFlutter.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -547,6 +518,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 2.14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = im.zego.express.example.screencapture.zegoExpressScreenCapture.BroadcastExtensionFlutter;
@@ -558,7 +530,6 @@
 		};
 		86A4DEE42546F3E0003910C2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B46110EFC55AE05D584BF9EF /* Pods-BroadcastExtensionFlutter.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -577,6 +548,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 2.14.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = im.zego.express.example.screencapture.zegoExpressScreenCapture.BroadcastExtensionFlutter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -587,7 +559,6 @@
 		};
 		86A4DEE52546F3E0003910C2 /* Profile */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F841B9B6130F3C539118201 /* Pods-BroadcastExtensionFlutter.profile.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -606,6 +577,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 2.14.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = im.zego.express.example.screencapture.zegoExpressScreenCapture.BroadcastExtensionFlutter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -662,7 +634,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -712,7 +684,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
@@ -727,7 +699,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -742,6 +714,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
+				MARKETING_VERSION = 2.14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = im.zego.express.example.screencapture.zegoExpressScreenCapture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -754,7 +727,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -769,6 +742,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
+				MARKETING_VERSION = 2.14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = im.zego.express.example.screencapture.zegoExpressScreenCapture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VERSIONING_SYSTEM = "apple-generic";

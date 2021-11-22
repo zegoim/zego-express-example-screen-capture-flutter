@@ -18,7 +18,6 @@ class ScreenCaptureManagerImplAndroid extends ScreenCaptureManager {
 
   int appID;
   String appSign;
-  bool isTestEnv;
 
   String roomID;
   String userID;
@@ -32,7 +31,6 @@ class ScreenCaptureManagerImplAndroid extends ScreenCaptureManager {
 
   @override
   Future<bool> startScreenCapture() async {
-
     bool isPermissionGranted = await requestPermission();
     if (!isPermissionGranted) {
       print('Can not get necessary system permission');
@@ -45,10 +43,11 @@ class ScreenCaptureManagerImplAndroid extends ScreenCaptureManager {
       return false;
     }
 
-    await ZegoExpressEngine.createEngine(appID, appSign, isTestEnv, ZegoScenario.General);
+    ZegoEngineProfile profile = ZegoEngineProfile(appID, appSign, ZegoScenario.General, false);
+    await ZegoExpressEngine.createEngineWithProfile(profile);
     /// Developers need to write native Android code to access native ZegoExpressEngine
     await ZegoExpressEngine.instance.enableCustomVideoCapture(true, config: ZegoCustomVideoCaptureConfig(ZegoVideoBufferType.SurfaceTexture));
-    await ZegoExpressEngine.instance.setVideoConfig(ZegoVideoConfig(videoWidth, videoHeight, videoWidth, videoHeight, videoFPS, videoBitrateKBPS, ZegoVideoCodecID.Default));
+    await ZegoExpressEngine.instance.setVideoConfig(ZegoVideoConfig(videoWidth, videoHeight, videoWidth, videoHeight, videoFPS, videoBitrateKBPS, ZegoVideoCodecID.Default, 2));
     await ZegoExpressEngine.instance.loginRoom(roomID, ZegoUser(userID, userName));
     await ZegoExpressEngine.instance.startPublishingStream(streamID);
     return true;
@@ -65,10 +64,9 @@ class ScreenCaptureManagerImplAndroid extends ScreenCaptureManager {
   }
 
   @override
-  Future<void> setParamsForCreateEngine(int appID, String appSign, bool isTestEnv, bool onlyCaptureVideo) {
+  Future<void> setParamsForCreateEngine(int appID, String appSign, bool onlyCaptureVideo) {
     this.appID = appID;
     this.appSign = appSign;
-    this.isTestEnv = isTestEnv;
     return null;
   }
 

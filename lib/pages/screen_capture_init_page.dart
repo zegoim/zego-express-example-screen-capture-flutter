@@ -6,6 +6,7 @@
 //  Copyright © 2020 Zego. All rights reserved.
 //
 
+import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,10 +15,6 @@ import 'package:zego_express_engine/zego_express_engine.dart';
 import 'package:zego_express_screen_capture/config/zego_config.dart';
 import 'package:zego_express_screen_capture/ui/zego_ui_tool.dart';
 import 'package:zego_express_screen_capture/pages/screen_capture_login_page.dart';
-
-
-import 'package:replay_kit_launcher/replay_kit_launcher.dart';
-import 'package:shared_preference_app_group/shared_preference_app_group.dart';
 
 class ScreenCaptureInitPage extends StatefulWidget {
 
@@ -66,8 +63,13 @@ class _ScreenCaptureInitPageState extends State<ScreenCaptureInitPage> {
     String strAppID = _appIDEdController.text.trim();
     String appSign = _appSignEdController.text.trim();
 
-    if (appGroup.isEmpty || strAppID.isEmpty || appSign.isEmpty) {
-      ZegoUITool.showAlert(context, 'AppID or AppSign or AppGroup cannot be empty');
+    if (strAppID.isEmpty || appSign.isEmpty) {
+      ZegoUITool.showAlert(context, 'AppID or AppSign cannot be empty');
+      return;
+    }
+
+    if (Platform.isIOS && appGroup.isEmpty) {
+      ZegoUITool.showAlert(context, 'AppGroup cannot be empty');
       return;
     }
 
@@ -91,9 +93,8 @@ class _ScreenCaptureInitPageState extends State<ScreenCaptureInitPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
-        title: Text('Step1 CreateEngine'),
+        title: Text('ScreenCapture'),
       ),
       body: SafeArea(
         child: GestureDetector(
@@ -105,9 +106,7 @@ class _ScreenCaptureInitPageState extends State<ScreenCaptureInitPage> {
             padding: const EdgeInsets.symmetric(horizontal: 40.0),
             child: ListView(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                ),
+                SizedBox(height: 20.0,),
                 Row(
                   children: <Widget>[
                     Text('Native SDK Version: '),
@@ -119,9 +118,7 @@ class _ScreenCaptureInitPageState extends State<ScreenCaptureInitPage> {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                ),
+                SizedBox(height: 30.0,),
                 Row(
                   children: <Widget>[
                     Text('User ID: '),
@@ -131,9 +128,7 @@ class _ScreenCaptureInitPageState extends State<ScreenCaptureInitPage> {
                     Text(ZegoConfig.instance.userID??'unknown'),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
-                ),
+                SizedBox(height: 10.0,),
                 Row(
                   children: <Widget>[
                     Text('User Name: '),
@@ -143,50 +138,8 @@ class _ScreenCaptureInitPageState extends State<ScreenCaptureInitPage> {
                     Text(ZegoConfig.instance.userName??'unknown'),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
-                ),
-                Row(
-                  children: <Widget>[
-                    Text('AppGroup: (for iOS ReplayKit)'),
-                    GestureDetector(
-                      child: Container(
-                        width: 40.0,
-                        height: 40.0,
-                        child: Icon(Icons.info_outline)
-                      ),
-                      onTap: () {
-                        ZegoUITool.showAlert(context,
-                          'If you want to experience this feature, please open [Runner.workspace] in `ios/` directory. '
-                          'navigator on the left of Xcode, find the [App Groups] column in the [Signing & Capabilities] tab of '
-                          'both Target [Runner] and [BroadcastExtensionFlutter], click the `+` to add a custom '
-                          'App Group ID and enable it; then fill in this App Group ID into the text field'
-                          );
-                      },
-                    ),
-                  ],
-                ),
-                TextField(
-                  controller: _appGroupEdController,
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.only(left: 10.0, top: 12.0, bottom: 12.0),
-                    hintText: 'Please enter AppGroup (for iOS ReplayKit)',
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.grey,
-                      )
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0xff0e88eb),
-                      )
-                    ),
-                  ),
-
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
-                ),
+                appGroupColumn(),
+                SizedBox(height: 20.0,),
                 Row(
                   children: <Widget>[
                     Text('AppID:'),
@@ -220,17 +173,13 @@ class _ScreenCaptureInitPageState extends State<ScreenCaptureInitPage> {
                   ),
 
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
-                ),
+                SizedBox(height: 20.0,),
                 Row(
                   children: <Widget>[
                     Text('AppSign:'),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
-                ),
+                SizedBox(height: 10.0,),
                 TextField(
                   controller: _appSignEdController,
                   decoration: InputDecoration(
@@ -248,46 +197,7 @@ class _ScreenCaptureInitPageState extends State<ScreenCaptureInitPage> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
-                ),
-                Row(
-                  children: <Widget>[
-                    Text('SDK Environment  '),
-                    Expanded(
-                      child: Text('(Please select the environment corresponding to AppID)',
-                        style: TextStyle(
-                          fontSize: 10.0
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Checkbox(
-                      value: ZegoConfig.instance.isTestEnv,
-                      onChanged: (value) {
-                        setState(() {
-                          ZegoConfig.instance.isTestEnv = value;
-                          ZegoConfig.instance.saveConfig();
-                        });
-                      },
-                    ),
-                    Text('Test'),
-
-                    Checkbox(
-                      value: !ZegoConfig.instance.isTestEnv,
-                      onChanged: (value) {
-                        setState(() {
-                          ZegoConfig.instance.isTestEnv = !value;
-                          ZegoConfig.instance.saveConfig();
-                        });
-                      },
-                    ),
-                    Text('Formal'),
-                  ],
-                ),
+                SizedBox(height: 30.0,),
                 Container(
                   padding: const EdgeInsets.all(0.0),
                   decoration: BoxDecoration(
@@ -313,4 +223,51 @@ class _ScreenCaptureInitPageState extends State<ScreenCaptureInitPage> {
     );
   }
 
+  Widget appGroupColumn() {
+    if (Platform.isIOS) {
+      return Column(children: [
+        SizedBox(height: 20.0,),
+        Row(
+          children: <Widget>[
+            Text('AppGroup: (Only for iOS ReplayKit)'),
+            GestureDetector(
+              child: Container(
+                  width: 40.0,
+                  height: 40.0,
+                  child: Icon(Icons.info_outline)
+              ),
+              onTap: () {
+                ZegoUITool.showAlert(context,
+                    'If you want to experience this feature, please open [Runner.workspace] in `ios/` directory. '
+                        'navigator on the left of Xcode, find the [App Groups] column in the [Signing & Capabilities] tab of '
+                        'both Target [Runner] and [BroadcastExtensionFlutter], click the `+` to add a custom '
+                        'App Group ID and enable it; then fill in this App Group ID into the text field'
+                );
+              },
+            ),
+          ],
+        ),
+        TextField(
+          enabled: Platform.isIOS,
+          controller: _appGroupEdController,
+          decoration: InputDecoration(
+            contentPadding: const EdgeInsets.only(left: 10.0, top: 12.0, bottom: 12.0),
+            hintText: 'Please enter AppGroup (for iOS ReplayKit)',
+            enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.grey,
+                )
+            ),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Color(0xff0e88eb),
+                )
+            ),
+          ),
+        ),
+      ]);
+    } else {
+      return SizedBox();
+    }
+  }
 }

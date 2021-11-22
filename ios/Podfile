@@ -34,9 +34,9 @@ end
 # Import native ZegoExpressEngine framework
 # Note that this version number must be the same with the flutter `zego_express_engine` plugin's imported in the main Flutter App
 # otherwise there will be problems when compliling
-target 'BroadcastExtensionFlutter' do
-  pod 'ZegoExpressEngine', '2.2.0'
-end
+# target 'BroadcastExtensionFlutter' do
+#   pod 'ZegoExpressEngine', '2.14.0'
+# end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
