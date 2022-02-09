@@ -2,9 +2,9 @@ PODS:
   - Flutter (1.0.0)
   - "permission_handler (5.1.0+2)":
     - Flutter
-  - replay_kit_launcher (0.3.0):
+  - replay_kit_launcher (1.0.0):
     - Flutter
-  - shared_preference_app_group (0.3.0):
+  - shared_preference_app_group (1.0.0):
     - Flutter
   - shared_preferences_ios (0.0.1):
     - Flutter
@@ -49,8 +49,8 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
   permission_handler: ccb20a9fad0ee9b1314a52b70b76b473c5f8dab0
-  replay_kit_launcher: 9c6874fe17ce278a6f0e99e3698acf194480e9a2
-  shared_preference_app_group: 4b43f9c787e876bfabf6805735677e3dec276bec
+  replay_kit_launcher: 828739da18c9785d5e9aafd4f075ea11d6b61499
+  shared_preference_app_group: 83d2284f9e747839c40fc281403b5b60d83e2989
   shared_preferences_ios: aef470a42dc4675a1cdd50e3158b42e3d1232b32
   url_launcher: b6e016d912f04be9f5bf6e8e82dc599b7ba59649
   zego_express_engine: 63d31f67bffa3fa77fa13b9fc76c1ccaac4facf4
