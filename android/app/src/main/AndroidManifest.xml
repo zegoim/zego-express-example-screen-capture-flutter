@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
-        android:name="io.flutter.app.FlutterApplication"
+        android:name="${applicationName}"
         android:label="ZegoScreenCaptureDemo"
         android:icon="@mipmap/ic_launcher">
         <activity
