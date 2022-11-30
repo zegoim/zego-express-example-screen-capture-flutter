@@ -10,12 +10,12 @@ PODS:
     - Flutter
   - url_launcher (0.0.1):
     - Flutter
-  - zego_express_engine (2.2.1):
+  - zego_express_engine (2.23.0):
     - Flutter
-    - ZegoExpressEngine (= 2.15.0)
-  - ZegoExpressEngine (2.15.0):
-    - ZegoExpressEngine/Video (= 2.15.0)
-  - ZegoExpressEngine/Video (2.15.0)
+    - ZegoExpressEngine (~> 2.23.0)
+  - ZegoExpressEngine (2.23.0):
+    - ZegoExpressEngine/Video (= 2.23.0)
+  - ZegoExpressEngine/Video (2.23.0)
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
@@ -47,15 +47,15 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/zego_express_engine/ios"
 
 SPEC CHECKSUMS:
-  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   permission_handler: ccb20a9fad0ee9b1314a52b70b76b473c5f8dab0
   replay_kit_launcher: 828739da18c9785d5e9aafd4f075ea11d6b61499
   shared_preference_app_group: 83d2284f9e747839c40fc281403b5b60d83e2989
   shared_preferences_ios: aef470a42dc4675a1cdd50e3158b42e3d1232b32
   url_launcher: b6e016d912f04be9f5bf6e8e82dc599b7ba59649
-  zego_express_engine: 5f024113f1cf27a27287427d49e0fcc5a87346a3
-  ZegoExpressEngine: b3f8f173c5af47ee53caf29c6d62660118b63b97
+  zego_express_engine: 79387e571f9d3bd0a467200c21187c35647244b1
+  ZegoExpressEngine: 2a02a784a20f2fc327af8d09b528806ec00fa93e
 
-PODFILE CHECKSUM: 74442cf36bbc166041710162488f848fdd604314
+PODFILE CHECKSUM: ec1b020ea8c60a14f663676ab304f2c52e6ef4bc
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

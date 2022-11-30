@@ -43,7 +43,8 @@ class ScreenCaptureManagerImplAndroid extends ScreenCaptureManager {
       return false;
     }
 
-    ZegoEngineProfile profile = ZegoEngineProfile(appID, appSign, ZegoScenario.General);
+    ZegoEngineProfile profile =
+        ZegoEngineProfile(appID, ZegoScenario.General, appSign: appSign);
     await ZegoExpressEngine.createEngineWithProfile(profile);
     /// Developers need to write native Android code to access native ZegoExpressEngine
     await ZegoExpressEngine.instance.enableCustomVideoCapture(true, config: ZegoCustomVideoCaptureConfig(ZegoVideoBufferType.SurfaceTexture));

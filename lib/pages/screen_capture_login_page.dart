@@ -205,11 +205,11 @@ class _ScreenCaptureLoginPageState extends State<ScreenCaptureLoginPage> {
                         content: Text(
                             'To play this stream, you can download and install the Zego flutter example.'),
                         actions: <Widget>[
-                          FlatButton(
+                                  TextButton(
                             child: Text('Dismiss'),
                             onPressed: () => Navigator.of(context).pop(),
                           ),
-                          FlatButton(
+                                  TextButton(
                             child: Text('Download'),
                             onPressed: () => launch('https://github.com/zegoim/zego-express-example-topics-flutter'),
                           )
